@@ -1,10 +1,22 @@
 import './Navbar.css'
+import './dynamic-hamburger.css'
+import {useState} from 'react'
 import { VscMenu } from 'react-icons/vsc'
 import { useWindowSize } from 'react-use'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   const { width, height } = useWindowSize();
+  const [state, setState] = useState({
+    menuOpen: false
+  })
+
+  const toggleMenuOpen = () => {
+    setState((state) => ({
+      ...state,
+      menuOpen: !state.menuOpen
+    }))
+  }
 
   return (
     <div className="Navbar">
@@ -20,7 +32,12 @@ export default function Navbar() {
             <li><Link to="contact">contact</Link></li>
           </div> :
           <div className="hamburger">
-            <VscMenu />
+            {/* <VscMenu /> */}
+            <div id="nav-icon4" className={state.menuOpen ? 'open' : null } onClick={toggleMenuOpen}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>}
       </div>
     </div>

@@ -14,10 +14,14 @@ function Plane(){
     ref.current.material.uniforms.uBigWavesElevation.value = 0.2
     ref.current.material.uniforms.uBigWavesFrequency.value.x = 3
     ref.current.material.uniforms.uBigWavesFrequency.value.y = 1
-  })
+    console.log(ref)
+  }, [])
 
   useFrame(() => {
+    // update uTime for GL Shader waves
     ref.current.material.uniforms.uTime.value = clock.getElapsedTime()
+    // rotate model
+    ref.current.rotation.z += 0.002
   })
 
   return(

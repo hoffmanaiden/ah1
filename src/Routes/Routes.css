@@ -6,7 +6,8 @@
   
   max-width: 80vw;
   margin: 0 auto;
-  margin-top: 60vh;
+  /* margin-top: 60vh; */
+  margin-top: 200px;
 }
 .text-box{
   font-family: 'DM Mono', monospace;
