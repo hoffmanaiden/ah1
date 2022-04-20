@@ -1,0 +1,17 @@
+.route-container{
+  
+}
+.home-container{
+  width: 600px;
+  
+  max-width: 80vw;
+  margin: 0 auto;
+  margin-top: 60vh;
+}
+.text-box{
+  font-family: 'DM Mono', monospace;
+  font-weight: 500; /* could be 300  */
+  background-color: white;
+  padding: 8px;
+  /* opacity: 80%; */
+}
