@@ -1,0 +1,56 @@
+.NavMenu{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  animation: fadeIn 0.5s;
+  -webkit-animation: fadeIn 0.6s;
+  -moz-animation: fadeIn 0.6s;
+  -o-animation: fadeIn 0.6s;
+  -ms-animation: fadeIn 0.6s;
+  font-family: 'Montserrat', sans-serif;
+}
+.NavMenu a:link{
+  color: black;
+  text-decoration: none;
+}
+.NavMenu a:visited{
+  color: black;
+  text-decoration: none;
+}
+.NavMenu a:hover{
+  color: black;
+  text-decoration: none;
+}
+.NavMenu a:active{
+  color: black;
+  text-decoration: none;
+}
+
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+.NavMenu-top-padding{
+  height: 200px;
+}
+.menuOption{
+  /* background-color: chocolate;
+  border: 5px solid red; */
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: 25px;
+}

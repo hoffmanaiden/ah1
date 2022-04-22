@@ -9,6 +9,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 
 import Scene from './3D/MeshPlane';
 import Navbar from './Components/Navbar/Navbar'
+import NavMenu from './Components/NavMenu/NavMenu'
 
 import Home from './Routes/Home'
 import Work from './Routes/Work'
@@ -18,6 +19,10 @@ import PortfolioItem from './Components/PortfolioItem/PortfolioItem';
 
 
 export default function App() {
+
+  const [state, setState] = useState({
+    menuOpen: false
+  })
 
   // useEffect(() => {
   // }, [])
@@ -29,8 +34,10 @@ export default function App() {
 
   return (
     <div className="App">
+      {state.menuOpen ? <NavMenu state={state} setState={setState}/> : null}
       <div className="foreground">
-        <Navbar />
+        <Navbar state={state} setState={setState} />
+        
         <div className="route-container">
           <Routes style={{ display: "block" }}>
             <Route exact path="/" element={<Home />} />

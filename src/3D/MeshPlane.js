@@ -26,7 +26,7 @@ function Plane(){
 
   return(
     <mesh position={[0,0,0]} ref={ref} rotation={[Math.PI/2,0,0]}>
-      <planeGeometry args={[8,8,128,128]} />
+      <planeGeometry args={[8,8,170,170]} />
       <twoMaterial side={THREE.DoubleSide}  />
     </mesh>
   )
@@ -34,7 +34,7 @@ function Plane(){
 
 export default function Scene({data}){
   return(
-    <Canvas className="Scene" camera={{ position: [-4, 1, 3], fov: 50 }} z-index={0} >
+    <Canvas className="Scene" camera={{ position: [-4, 1, 3], fov: 50 }} >
       {/* <OrbitControls /> */}
       <Suspense fallback={null}>
         <Plane/>

@@ -5,11 +5,9 @@ import { VscMenu } from 'react-icons/vsc'
 import { useWindowSize } from 'react-use'
 import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar({state, setState}) {
   const { width, height } = useWindowSize();
-  const [state, setState] = useState({
-    menuOpen: false
-  })
+
 
   const toggleMenuOpen = () => {
     setState((state) => ({
