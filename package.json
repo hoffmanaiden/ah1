@@ -8,12 +8,14 @@
   "private": true,
   "main": "src/index.js",
   "dependencies": {
+    "@aws-amplify/ui-react": "^2.15.8",
     "@craco/craco": "^6.4.3",
     "@react-three/drei": "^8.8.3",
     "@react-three/fiber": "^7.0.26",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "aws-amplify": "^4.3.20",
     "craco-glslify-loader": "^1.0.2",
     "leva": "^0.9.18",
     "react": "^17.0.2",
@@ -49,5 +51,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "node-polyfill-webpack-plugin": "^1.1.4"
+  }
 }

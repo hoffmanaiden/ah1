@@ -4,4 +4,41 @@
 /* portfolioList width is controlled with App.css */
 .PortfolioItem{
   font-family: 'DM Mono', monospace;
+  margin-bottom: 50px;
+  /* background-color: coral; */
+}
+.centerPortfolioItem{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+  /* background-color: greenyellow; */
+}
+.portfolioText {
+  width: 300px;
+  font-size: 1.4rem;
+}
+.projectName{
+  background-color: white;
+  padding: 0 10px;
+}
+.briefDescription{
+  padding: 0 10px;
+  background-color: white;
+  font-size: 1rem;
+}
+.PortfolioItem img {
+  /* width: 100%; */
+  max-width: 600px;
+}
+
+@media only screen and (max-width: 1120px){
+  .centerPortfolioItem{
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 750px){
+  .centerPortfolioItem{
+    width: 92%;
+  }
 }

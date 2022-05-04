@@ -1,9 +1,21 @@
 import './PortfolioItem.css'
+import { Link } from "react-router-dom";
 
-export default function PortfolioItem(){
-  return(
-    <div className="PortfolioItem">
-      <p>This is a portfolio item. f</p>
-    </div>
+export default function PortfolioItem({ project }) {
+  // console.log(project)
+  let newName = project.name.replace(" ", "_")
+  console.log(newName)
+  return (
+    <Link to={project.id}>
+      <div className="PortfolioItem">
+        <div className="centerPortfolioItem">
+          <div className="portfolioText">
+            <span className='projectName'>{project.name}</span>
+            <div className='briefDescription'>{project.briefDescription}<br />Click to see details.</div>
+          </div>
+          <img src={project.imgThumbnail} />
+        </div>
+      </div>
+    </Link>
   )
 }

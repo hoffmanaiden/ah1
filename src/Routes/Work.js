@@ -1,7 +1,42 @@
-export default function Work(){
-  return(
+import PortfolioItem from '../Components/PortfolioItem/PortfolioItem';
+import {DataStore} from 'aws-amplify'
+import {Project} from '../models'
+import {useEffect, useState} from 'react'
+
+export default function Work() {
+
+  const [state, setState] = useState({
+    projects: []
+  })
+
+  async function fetchData(){
+    try{
+      const projects = await DataStore.query(Project)
+      setState((state) => (
+        {
+          ...state,
+          projects
+        }
+      ))
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  let newList = [];
+  state.projects.map(project => newList.push(project))
+  let reversedList = newList.reverse();
+  return (
     <div>
-      <h1>This is the work route</h1>
+      <div className="portfolioList">
+        {reversedList.map( project => (
+          <PortfolioItem key={project.id} project={project}/>
+        ))}
+      </div>
     </div>
   )
 }
