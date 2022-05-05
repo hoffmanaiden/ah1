@@ -1,3 +1,10 @@
+type Technology @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  link: AWSURL
+  projectID: ID! @index(name: "byProject")
+}
+
 type Project @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
@@ -12,5 +19,6 @@ type Project @model @auth(rules: [{allow: public}]) {
   img5: AWSURL
   img6: AWSURL
   imgThumbnail: AWSURL
+  Technologies: [Technology] @hasMany(indexName: "byProject", fields: ["id"])
 }
  

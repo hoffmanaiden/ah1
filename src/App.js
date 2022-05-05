@@ -7,6 +7,7 @@ import { useControls, Leva } from 'leva'
 import { Routes, Route, Link } from 'react-router-dom'
 
 
+
 import Scene from './3D/MeshPlane';
 import Navbar from './Components/Navbar/Navbar'
 import NavMenu from './Components/NavMenu/NavMenu'
@@ -32,15 +33,15 @@ export default function App() {
   })
 
   return (
-    <div className="App">
+    <div className="App" >
       {state.menuOpen ? <NavMenu state={state} setState={setState} /> : null}
-      <div className="foreground">
+      <div className="foreground" style={state.menuOpen ? {overflow: "hidden"}: null}>
         <Navbar state={state} setState={setState} />
         <Leva hidden={true} />
         <div className="route-container">
           <Routes style={{ display: "block" }}>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/work" element={<Work />}/>
+            <Route exact path="/work" element={<Work projects={state.projects}/>}/>
             <Route exact path="/work/:workId" element={<PortfolioPage/>}/>
             <Route exact path="/contact" element={<Contact />} />
           </Routes>

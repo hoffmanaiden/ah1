@@ -2,9 +2,7 @@ import './PortfolioItem.css'
 import { Link } from "react-router-dom";
 
 export default function PortfolioItem({ project }) {
-  // console.log(project)
   let newName = project.name.replace(" ", "_")
-  console.log(newName)
   return (
     <Link to={project.id}>
       <div className="PortfolioItem">

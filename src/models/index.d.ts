@@ -4,8 +4,23 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type TechnologyMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type ProjectMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class Technology {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly link?: string | null;
+  readonly projectID: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Technology, TechnologyMetaData>);
+  static copyOf(source: Technology, mutator: (draft: MutableModel<Technology, TechnologyMetaData>) => MutableModel<Technology, TechnologyMetaData> | void): Technology;
 }
 
 export declare class Project {
@@ -22,6 +37,7 @@ export declare class Project {
   readonly img5?: string | null;
   readonly img6?: string | null;
   readonly imgThumbnail?: string | null;
+  readonly Technologies?: (Technology | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Project, ProjectMetaData>);
