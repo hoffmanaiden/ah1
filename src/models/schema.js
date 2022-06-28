@@ -24,12 +24,19 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "projectID": {
-                    "name": "projectID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
+                "projects": {
+                    "name": "projects",
+                    "isArray": true,
+                    "type": {
+                        "model": "ProjectTechnology"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "technology"
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -54,15 +61,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byProject",
-                        "fields": [
-                            "projectID"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -180,14 +178,14 @@ export const schema = {
                     "name": "Technologies",
                     "isArray": true,
                     "type": {
-                        "model": "Technology"
+                        "model": "ProjectTechnology"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "projectID"
+                        "associatedWith": "project"
                     }
                 },
                 "createdAt": {
@@ -231,9 +229,89 @@ export const schema = {
                     }
                 }
             ]
+        },
+        "ProjectTechnology": {
+            "name": "ProjectTechnology",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "technology": {
+                    "name": "technology",
+                    "isArray": false,
+                    "type": {
+                        "model": "Technology"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "technologyID"
+                    }
+                },
+                "project": {
+                    "name": "project",
+                    "isArray": false,
+                    "type": {
+                        "model": "Project"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "projectID"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "ProjectTechnologies",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byTechnology",
+                        "fields": [
+                            "technologyID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byProject",
+                        "fields": [
+                            "projectID"
+                        ]
+                    }
+                }
+            ]
         }
     },
     "enums": {},
     "nonModels": {},
-    "version": "4d37d3ca965aff0d2a0550190cb6f878"
+    "version": "498fccb369e5ab5c4b7a425cfc402fb1"
 };

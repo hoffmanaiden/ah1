@@ -21,7 +21,8 @@ import PortfolioPage from "./Routes/PortfolioPage";
 export default function App() {
 
   const [state, setState] = useState({
-    menuOpen: false
+    menuOpen: false,
+    levaOpen: false
   })
 
   useEffect(() => {

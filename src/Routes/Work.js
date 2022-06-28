@@ -11,15 +11,15 @@ export default function Work() {
 
   async function fetchData(){
     try{
-      const projects = await DataStore.query(Project)
+      const gotProjects = await DataStore.query(Project)
       setState((state) => (
         {
           ...state,
-          projects
+          projects: gotProjects
         }
       ))
     }catch(err){
-      console.log(err)
+      console.log('Not getting the datas')
     }
   }
 

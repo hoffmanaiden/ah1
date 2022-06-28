@@ -43,14 +43,15 @@ export default function PortfolioPage(){
         <div className="PortfolioTitle">{state.selectedProject.name}</div>
         <div className="portfolioDescription">{state.selectedProject.briefDescription}</div>
         <div className="content">
-          <div className="button">See project</div>
-          <div className="button"><FaGithub/> See repo</div>
+          {state.selectedProject.projectLink ? <div className="button"><a target="_blank" href={state.selectedProject.projectLink}>See project</a></div> : null }
+          <div className="button"><a target="_blank" href={state.selectedProject.repo}><FaGithub/> See repo</a></div>
           <br/>
           <br/>
-          <img src={state.selectedProject.img1} alt={state.selectedProject.img1}/>
-          <br/>
-          <br/>
-          <div>{state.selectedProject.fullDescription}</div>
+          {state.selectedProject.img1 ? <a href={state.selectedProject.img1}><img src={state.selectedProject.img1} alt={state.selectedProject.img1}/><br/><br/></a> : null }
+          {state.selectedProject.img2 ? <a href={state.selectedProject.img2}><img src={state.selectedProject.img2} alt={state.selectedProject.img2}/><br/><br/></a> : null }
+          {state.selectedProject.img3 ? <a href={state.selectedProject.img3}><img src={state.selectedProject.img3} alt={state.selectedProject.img3}/><br/><br/></a> : null }
+          {state.selectedProject.img4 ? <a href={state.selectedProject.img4}><img src={state.selectedProject.img4} alt={state.selectedProject.img4}/><br/><br/></a> : null }
+          {state.selectedProject.fullDescription ? <div className="text-box">{state.selectedProject.fullDescription}</div> : null}
         </div>
       </div>
     )

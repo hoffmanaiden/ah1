@@ -3,9 +3,9 @@ import './ToggleLeva.css'
 export default function ToggleLeva() {
   return (
     <div className='ToggleLeva'>
-      <label class="switch">
+      <label className="switch">
         <input type="checkbox" />
-        <span class="slider round"></span>
+        <span className="slider round"></span>
       </label>
     </div>
   )

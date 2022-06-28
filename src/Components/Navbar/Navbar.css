@@ -2,8 +2,9 @@
   width: 100vw;
   background-color: white;
   position: fixed;
-  top: 15px;
+  top: 0;
   left: 0;
+  padding-top: 15px;
 }
 .Navbar-Inner{
   display: flex;
@@ -61,7 +62,7 @@
 }
 @media only screen and (max-width: 750px){
   .Navbar{
-    top: 10px;
+    padding-top: 10px;
   }
   .logo{
     margin-top: 10px;

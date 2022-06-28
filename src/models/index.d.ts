@@ -12,11 +12,15 @@ type ProjectMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type ProjectTechnologyMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 export declare class Technology {
   readonly id: string;
   readonly name?: string | null;
   readonly link?: string | null;
-  readonly projectID: string;
+  readonly projects?: (ProjectTechnology | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Technology, TechnologyMetaData>);
@@ -37,9 +41,19 @@ export declare class Project {
   readonly img5?: string | null;
   readonly img6?: string | null;
   readonly imgThumbnail?: string | null;
-  readonly Technologies?: (Technology | null)[] | null;
+  readonly Technologies?: (ProjectTechnology | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Project, ProjectMetaData>);
   static copyOf(source: Project, mutator: (draft: MutableModel<Project, ProjectMetaData>) => MutableModel<Project, ProjectMetaData> | void): Project;
+}
+
+export declare class ProjectTechnology {
+  readonly id: string;
+  readonly technology: Technology;
+  readonly project: Project;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<ProjectTechnology, ProjectTechnologyMetaData>);
+  static copyOf(source: ProjectTechnology, mutator: (draft: MutableModel<ProjectTechnology, ProjectTechnologyMetaData>) => MutableModel<ProjectTechnology, ProjectTechnologyMetaData> | void): ProjectTechnology;
 }
