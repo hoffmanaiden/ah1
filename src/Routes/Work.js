@@ -25,6 +25,10 @@ export default function Work() {
 
   useEffect(() => {
     fetchData()
+    const subscription = DataStore.observe(Project).subscribe(() => {
+      fetchData()
+    })
+    return () => subscription.unsubscribe()
   }, [])
 
   let newList = [];
