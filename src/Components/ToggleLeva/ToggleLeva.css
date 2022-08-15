@@ -1,7 +1,5 @@
 .ToggleLeva{
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  scale: 0.75;
 }
 
 /* The switch - the box around the slider */

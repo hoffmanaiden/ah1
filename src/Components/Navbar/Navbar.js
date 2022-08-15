@@ -1,19 +1,21 @@
 import './Navbar.css'
 import './dynamic-hamburger.css'
-import { useState } from 'react'
+import { useContext } from 'react'
 import { VscMenu } from 'react-icons/vsc'
 import { useWindowSize } from 'react-use'
 import { Link } from 'react-router-dom'
+import {AppContext} from '../../App'
 
-export default function Navbar({ state, setState }) {
+export default function Navbar() {
   const { width, height } = useWindowSize();
-
+  const {state, dispatch} = useContext(AppContext)
 
   const toggleMenuOpen = () => {
-    setState((state) => ({
-      ...state,
-      menuOpen: !state.menuOpen
-    }))
+    dispatch({type: 'toggleMenu'})
+    // setState((state) => ({
+    //   ...state,
+    //   menuOpen: !state.menuOpen
+    // }))
   }
 
   return (
@@ -25,11 +27,11 @@ export default function Navbar({ state, setState }) {
             <span className='logo-lastName'>Hoffman</span>
           </div>
         </Link>
-        {width > 750 ?
+        {width > 900 ?
           <div className="full-menu">
-            <li><Link to="/">home</Link></li>
-            <li><Link to="work">work</Link></li>
-            <li><Link to="contact">contact</Link></li>
+            <li onClick={() => dispatch({type: 'resetDefaults'})}><Link to="/">home</Link></li>
+            <li onClick={() => dispatch({type: 'resetDefaults'})}><Link to="work">work</Link></li>
+            <li onClick={() => dispatch({type: 'resetDefaults'})}><Link to="contact">contact</Link></li>
           </div> :
           <div className="hamburger">
             {/* <VscMenu /> */}

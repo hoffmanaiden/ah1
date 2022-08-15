@@ -1,13 +1,18 @@
 import './NavMenu.css'
+import {useContext} from 'react'
 import { Link } from 'react-router-dom'
+import { AppContext } from '../../App'
 
-export default function NavMenu({state, setState}){
+export default function NavMenu(){
+
+  const {state, dispatch} = useContext(AppContext)
 
   const toggleMenuOpen = () => {
-    setState((state) => ({
-      ...state,
-      menuOpen: !state.menuOpen
-    }))
+    dispatch({type: 'toggleMenu'})
+    // setState((state) => ({
+    //   ...state,
+    //   menuOpen: !state.menuOpen
+    // }))
   }
 
   return(
