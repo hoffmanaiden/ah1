@@ -17,6 +17,7 @@ export function reducer(state, action){
         amplitude: 0.3,
         freqX: 3,
         freqY: 1,
+        speed: 1,
         textBoxOppacity: 1
       }
     default:

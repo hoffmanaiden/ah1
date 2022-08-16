@@ -17,6 +17,7 @@ export class TwoMaterial extends THREE.ShaderMaterial {
       wireframe: true,
       uniforms: {
         uTime: {value: 0},
+        uSpeedMulti: {value: 1},
         uFrequency: {value: new THREE.Vector2(0, 0)},
         uBigWavesElevation: {value: 0.2},
         uBigWavesFrequency: {value: new THREE.Vector2(4, 1.5)},

@@ -1,21 +1,24 @@
 import * as THREE from 'three'
-import React, { Suspense, useRef, useState, useEffect, useContext } from 'react';
+import React, { Suspense, useRef, useState, useEffect, useContext, createContext } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei';
-import {AppContext} from '../App'
+import { OrbitControls, useContextBridge } from '@react-three/drei';
+import { AppContext } from '../App'
 // import './ShaderOne/OneMaterial'
 import './SeaWaves/TwoMaterial'
 
 
 const clock = new THREE.Clock()
 
-function Plane({...props}) {
-  // const {state, dispatch} = useContext(AppContext)
+
+function Plane({ ...props }) {
+  const {state, dispatch} = useContext(AppContext)
   const ref = useRef()
   useEffect(() => {
     ref.current.material.uniforms.uBigWavesElevation.value = props.amplitude
     ref.current.material.uniforms.uBigWavesFrequency.value.x = props.freqX
     ref.current.material.uniforms.uBigWavesFrequency.value.y = props.freqY
+    ref.current.material.uniforms.uSpeedMulti.value = props.speed
+    // console.log(state)
   }, [props])
 
   useFrame(() => {
@@ -33,13 +36,17 @@ function Plane({...props}) {
   )
 }
 
-export default function Scene({...props}) {
+export default function Scene({ ...props }) {
+  // const { state, dispatch } = useContext(AppContext)
+  const ContextBridge = useContextBridge(AppContext)
   return (
     <Canvas className="Scene" camera={{ position: [-4, 1, 3], fov: 50 }} >
-      {/* <OrbitControls /> */}
-      <Suspense fallback={null}>
-        <Plane {...props}/>
-      </Suspense>
+      <ContextBridge>
+        {/* <OrbitControls /> */}
+        <Suspense fallback={null}>
+          <Plane {...props} />
+        </Suspense>
+      </ContextBridge>
     </Canvas>
   )
 }

@@ -26,6 +26,7 @@ const initialState = {
   amplitude: 0.3,
   freqX: 3,
   freqY: 1,
+  speed: 1
 }
 
 export default function App() {
@@ -37,9 +38,10 @@ export default function App() {
   useEffect(() => {
   }, [])
   const {...props} = useControls({
-    amplitude: { value: state.amplitude, min: 0, max: 1.11, step: 0.01 },
+    amplitude: { value: state.amplitude, min: 0, max: 1.33, step: 0.01 },
     freqX: { value: state.freqX, min: 0, max: 10, step: 0.01 },
     freqY: { value: state.freqY, min: 0, max: 10, step: 0.01 },
+    speed: { value: state.speed, min: 0, max: 10, step: 0.01 },
   })
 
   return (

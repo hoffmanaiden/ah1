@@ -18,7 +18,6 @@ export default function ToggleLeva() {
       <label className="switch">
         <input ref={ref}type="checkbox" onClick={() => {
           dispatch({type: 'toggleLeva'})
-          console.log(ref.current.checked)
         }}/>
         <span className="slider round"></span>
       </label>

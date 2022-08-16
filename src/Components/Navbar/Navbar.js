@@ -22,7 +22,7 @@ export default function Navbar() {
     <div className="Navbar">
       <div className="Navbar-Inner">
         <Link to='/'>
-          <div className="logo">
+          <div className="logo" onClick={() => dispatch({type: 'resetDefaults'})}>
             <span className='logo-firstName'>Aiden</span><br />
             <span className='logo-lastName'>Hoffman</span>
           </div>
