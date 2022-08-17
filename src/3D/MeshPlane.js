@@ -11,8 +11,9 @@ const clock = new THREE.Clock()
 
 
 function Plane({ ...props }) {
-  const {state, dispatch} = useContext(AppContext)
+  
   const ref = useRef()
+
   useEffect(() => {
     ref.current.material.uniforms.uBigWavesElevation.value = props.amplitude
     ref.current.material.uniforms.uBigWavesFrequency.value.x = props.freqX
@@ -39,10 +40,12 @@ function Plane({ ...props }) {
 export default function Scene({ ...props }) {
   // const { state, dispatch } = useContext(AppContext)
   const ContextBridge = useContextBridge(AppContext)
+  const {state, dispatch} = useContext(AppContext)
+  console.log(state)
   return (
     <Canvas className="Scene" camera={{ position: [-4, 1, 3], fov: 50 }} >
       <ContextBridge>
-        {/* <OrbitControls /> */}
+        { state.levaHidden ? null : <OrbitControls /> }
         <Suspense fallback={null}>
           <Plane {...props} />
         </Suspense>
